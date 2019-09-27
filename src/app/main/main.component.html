@@ -1,2 +1,3 @@
-<app-navbar></app-navbar>
-<app-home *ngIf="this.selectedSegment === 'home'" class= "segment"></app-home>
+<app-navbar (segmentSelected)="this.segmentSelected($event)" [webUtil]="this.webUtil"></app-navbar>
+<app-home *ngIf="this.segment === 'home'"></app-home>
+<app-events *ngIf="this.segment === 'events'"></app-events>

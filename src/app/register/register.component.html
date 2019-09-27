@@ -1,0 +1,126 @@
+<div class="register">
+  <div class="container form-container col-md-6">
+    <h1 class="title"><span>Registration <i (click)="this.returnToLogin()" class="fas fa-undo-alt"></i></span></h1>
+    <h2 class="text-divider"><span>Step {{this.step}} : {{this.stepText[this.step - 1]}}</span></h2>
+    <form [formGroup]="registrationForm" novalidate>
+      <div *ngIf="this.step === 1">
+        <div class="form-row p-3">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <label>E-mail</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" [(ngModel)]="this.profileDto.email" placeholder="Enter e-mail" formControlName="email" required>
+                </div>
+                <div *ngIf="this.registrationForm.controls['email'].invalid && (this.registrationForm.controls['email'].dirty || this.registrationForm.controls['email'].touched || this.submitted[0])" class="alert alert-danger">
+                  <div *ngIf="this.registrationForm.controls['email'].errors.required">
+                    E-mail is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row p-3">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <label>Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" [(ngModel)]="this.profileDto.password" placeholder="Enter password" formControlName="password" required>
+                </div>
+                <div *ngIf="this.registrationForm.controls['password'].invalid && (this.registrationForm.controls['password'].dirty || this.registrationForm.controls['password'].touched || this.submitted[0])" class="alert alert-danger">
+                  <div *ngIf="this.registrationForm.controls['password'].errors.required">
+                    Password is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row p-3">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <label>Confirm password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" [(ngModel)]="this.profileDto.confirmPassword" placeholder="Confirm password" formControlName="confirmPassword" required>
+                </div>
+                <div *ngIf="this.profileDto.confirmPassword !== this.profileDto.password && (this.registrationForm.controls['confirmPassword'].dirty || this.registrationForm.controls['confirmPassword'].touched || this.submitted[0])" class="alert alert-danger">
+                  <div *ngIf="this.profileDto.confirmPassword !== this.profileDto.password">
+                    Passwords have to match
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div *ngIf="this.step === 2">
+        <a-input [placeholder]="'Enter first name'" [label]="'First name'"></a-input>
+        <a-input [placeholder]="'Enter last name'" [label]="'Last name'"></a-input>
+
+        <div class="form-row p-3">
+          <div class="col-11">
+            <div class="col-md-12 mb-12">
+              <label for="country">Country:</label>
+              <div class="input-group">
+                <select class="form-control" [(ngModel)]="this.profileDto.country"  formControlName="country" required>
+                  <option class="custom-option" *ngFor="let country of this.webUtil.countryCodes" [ngValue]="country">({{country.dial_code}}) {{country.name}}</option>
+                </select>
+              </div>
+              <div *ngIf="this.registrationForm.controls['country'].invalid && (this.registrationForm.controls['country'].dirty || this.registrationForm.controls['country'].touched || this.submitted[1])" class="alert alert-danger">
+                <div *ngIf="this.registrationForm.controls['country'].errors.required">
+                  Please, choose your country.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row p-3">
+          <div class="col-11">
+            <div class="col-md-12 mb-12">
+              <label>Phone number</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">{{this.profileDto.country?.dial_code}}</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter phone number" [(ngModel)]="this.profileDto.phoneNumber" formControlName="phoneNumber" required>
+              </div>
+              <div *ngIf="this.registrationForm.controls['phoneNumber'].invalid && (this.registrationForm.controls['phoneNumber'].dirty || this.registrationForm.controls['phoneNumber'].touched || this.submitted[1])" class="alert alert-danger">
+                <div *ngIf="this.registrationForm.controls['phoneNumber'].errors.required">
+                  Phone number is required.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="this.step === 3">
+        <div class="form-row p-3" *ngIf="this.step === 3">
+          <div class="col-11">
+            <div class="col-md-12 mb-12">
+              Thank you for registering on ESN Sports Granada. Let's sport!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row p-3" *ngIf="this.step !== 3">
+        <div class="col-11">
+          <div class="col-md-12 mb-12">
+            <div class="col-6" style="float:left; padding-left: 0;">
+              <a-button [text]="'Previous'" (onClick)="this.prevStep()" *ngIf="this.step !== 1"></a-button>
+            </div>
+            <div class="col-6" style="float: right; padding-right: 0;">
+              <a-button [text]="this.nextStepText" (onClick)="this.nextStep()"></a-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;" *ngIf="this.step !== 3">
+        <span class="step" [ngClass]="this.step === 1 ? 'active' : ''"></span>
+        <span class="step" [ngClass]="this.step === 2 ? 'active' : ''"></span>
+      </div>
+    </form>
+    <p>Form value: {{ registrationForm.value | json }}</p>
+    <p>Form status: {{ registrationForm.status | json }}</p>
+    <a-footer [isDarkTheme]="false"></a-footer>
+  </div>
+</div>
+<router-outlet></router-outlet>
+

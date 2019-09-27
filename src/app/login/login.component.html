@@ -1,0 +1,62 @@
+<div class="login">
+  <div class="login-title">
+    <img src="../../assets/esn_icon.png" width="5%">
+    Welcome to ESN Sports Granada!
+    <img src="../../assets/esn_icon.png" width="5%">
+  </div>
+  <div class="login-container" style="margin-top: 1%;">
+      <img src="../../assets/granada.jpg" class="login-img col-md-6">
+      <div class="container form-container col-md-6">
+        <form>
+          <div class="form-row" style="text-align: center;">
+              <img src="../../assets/esn_login.png" width="90%">
+          </div>
+          <div class="form-row p-2">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <label>E-mail</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter e-mail" required>
+                </div>
+                <div class="invalid-tooltip">
+                  Please choose a unique and valid e-mail.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row p-2">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <label for="validationTooltipPhoneNumber">Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="validationTooltipPassword" placeholder="Enter password" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row p-2">
+            <div class="col-11">
+              <div class="col-md-12 mb-12">
+                <div class="col-6" style="display: inline-block; padding-left: 0px; padding-right: 5px;">
+                  <a [routerLink]="['..','register']" routerLinkActive="active">
+                    <a-button text="Register"></a-button>
+                  </a>
+                </div>
+                <div class="col-6" style="display: inline-block; padding-left: 5px; padding-right:0px;">
+                  <a-button (onClick)="this.login()" [icon]="'fas fa-sign-in-alt'" [text]="'Log in'"></a-button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row p-2">
+              <div class="col-10">
+                <div class="col-md-12 mb-12">
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+  </div>
+  <a-footer [isDarkTheme]="true"></a-footer>
+</div>
+<router-outlet></router-outlet>

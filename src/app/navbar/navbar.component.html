@@ -1,1 +1,36 @@
-<p>navbar works!</p>
+<div class="a-navbar">
+  <div class="navbar-title">
+    <img  class="logo" src="../../assets/esn_icon.png">
+    <img  class="esn-text" src="../../assets/esn.png">
+    <label>Sports Granada</label>
+  </div>
+  <button class="a-nav-button btn" (click)="this.selectSegment('home')">
+    Moon
+  </button>
+  <div class="dropdown">
+    <button class="a-nav-button btn" (click)="this.selectSegment('events')">
+      Events
+    </button>
+    <div class="dropdown-content events-dropdown">
+      <button>View events</button>
+      <button>Create an event</button>
+      <button>My events</button>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="a-nav-button btn" (click)="this.selectSegment('profile')">
+      Profile
+    </button>
+    <div class="dropdown-content profile-dropdown">
+      <button>View profile</button>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="a-nav-button btn" (click)="this.selectSegment('settings')">
+      Settings
+    </button>
+    <div class="dropdown-content settings-dropdown">
+      <button (click)="signOut()">Sign out</button>
+    </div>
+  </div>
+</div>

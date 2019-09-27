@@ -12,4 +12,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  navToEventsSite(sport: string) {
+    console.log(sport);
+  }
 }

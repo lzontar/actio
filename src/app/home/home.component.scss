@@ -1,0 +1,89 @@
+@import "../../styles.scss";
+
+
+.container-fb {
+  position: fixed;
+  left: 0;
+  top:8%  ;
+
+  width: 50%;
+  height:46%;
+  cursor: pointer;
+}
+.container-bb {
+  position: fixed;
+  left: 50%;
+  top:8%;
+  width: 50%;
+  height:46%;
+  cursor: pointer;
+}
+.container-vb {
+  position: fixed;
+  left: 0;
+  top:54%;
+  width: 50%;
+  height:46%;
+  cursor: pointer;
+}
+.container-s {
+  position: fixed;
+  left: 50%;
+  top:54%;
+  width: 50%;
+  height:46%;
+  cursor: pointer;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.a-container:hover .image {
+  opacity: 0.6;
+}
+
+.a-container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  opacity: 0.7;
+  background-color: #4d4d4d;
+  color: white;
+  font-size: 16px;
+  font-variant: small-caps;
+  padding: 16px 32px;
+  text-align: center;
+
+}
+
+.text-fb {
+  background-color:$esn-magenta;
+}
+.text-bb {
+  background-color:$esn-cyan;
+}
+.text-vb {
+  background-color:$esn-green;
+}
+.text-s {
+  background-color:$esn-orange;
+}

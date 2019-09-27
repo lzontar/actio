@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { WebUtil } from '../framework/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -6,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  selectedSegment = 'home';
-
-  constructor() { }
+  segment = 'home';
+  webUtil: WebUtil<any>;
+  constructor(router: Router) {
+    this.webUtil = new WebUtil(router);
+  }
 
   ngOnInit() {
   }
 
+  segmentSelected(segment: string) {
+    this.segment = segment;
+  }
 }
